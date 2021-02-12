@@ -1,0 +1,55 @@
+grammar CalcGrammar;
+
+header #package calc.gen;#
+
+sh returns #int res#
+    : $asRes=as $shtRes=sht(#asRes.res#) #this.res = shtRes.res;#
+    ;
+
+sht #int acc# returns #int res#
+    : SHL $asRes=as $shtRes=sht(#acc << asRes.res#) #this.res = shtRes.res;#
+    | SHR $asRes=as $shtRes=sht(#acc >> asRes.res#) #this.res = shtRes.res;#
+    | #this.res = acc;#
+    ;
+
+as returns #int res#
+    : $mdRes=md $astRes=ast(#mdRes.res#) SUBT #this.res = astRes.res;#
+    ;
+
+ast #int acc# returns #int res#
+    : ADD $mdRes=md $astRes=ast(#acc + mdRes.res#) #this.res = astRes.res;#
+    | SUBT $mdRes=md $astRes=ast(#acc - mdRes.res#) #this.res = astRes.res;#
+    | #this.res = acc;#
+    ;
+
+md returns #int res#
+    : $unRes=un $mdtRes=mdt(#unRes.res#) #this.res = mdtRes.res;#
+    ;
+
+mdt #int acc# returns #int res#
+    : MUL $unRes=un $mdtRes=mdt(#acc * unRes.res#) #this.res = mdtRes.res;#
+    | DIV $unRes=un $mdtRes=mdt(#acc / unRes.res#) #this.res = mdtRes.res;#
+    | #this.res = acc;#
+    ;
+
+un returns #int res#
+    : SUBT $unRes=un #this.res = -unRes.res;#
+    | LB $shRes=sh RB #this.res = shRes.res;#
+    | $numRes=NUM #this.res = Integer.parseInt(numRes.text);#
+    | SQ LB $shRes=sh RB #this.res = shRes.res * shRes.res;#
+    | ABS LB $shRes=sh RB #this.res = Math.abs(shRes.res);#
+    ;
+
+
+ADD : "\\+";
+SQ : "square";
+ABS : "abs";
+SUBT : "-";
+MUL : "\\*";
+DIV : "/";
+SHL : "<<";
+SHR : ">>";
+LB : "\\(";
+RB : "\\)";
+NUM : "0|([1-9][0-9]*)";
+WS : "[ \r\n\t]" -> skip;
