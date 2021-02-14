@@ -13,7 +13,7 @@ sht #int acc# returns #int res#
     ;
 
 as returns #int res#
-    : $mdRes=md $astRes=ast(#mdRes.res#) SUBT #this.res = astRes.res;#
+    : $mdRes=md $astRes=ast(#mdRes.res#) #this.res = astRes.res;#
     ;
 
 ast #int acc# returns #int res#

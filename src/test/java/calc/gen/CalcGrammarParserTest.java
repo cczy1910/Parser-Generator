@@ -1,11 +1,11 @@
-package calc.test;
+package calc.gen;
 
-import calc.gen.CalcGrammarParser;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-public class CalcTest {
+public class CalcGrammarParserTest {
+
     private static int parseResult(String s) {
         return new CalcGrammarParser(s).parse().res;
     }
@@ -59,6 +59,4 @@ public class CalcTest {
     public void ShiftComplexTest() {
         assertEquals(12, parseResult("(2 + 2 * 2 << 1 + 1) / (16 >> 3)"));
     }
-
-
 }

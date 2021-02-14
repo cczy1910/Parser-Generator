@@ -1,7 +1,6 @@
 package calc.gen;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CalcGrammarParser {
     CalcGrammarLexer lexer;
