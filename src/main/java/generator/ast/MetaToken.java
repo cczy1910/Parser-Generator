@@ -22,7 +22,7 @@ public class MetaToken extends AbstractRule {
         this.skip = skip;
     }
 
-    protected void deduceRules(Map<String, AbstractRule> naming) {
+    public void deduceRules(Map<String, AbstractRule> naming) {
 
     }
 

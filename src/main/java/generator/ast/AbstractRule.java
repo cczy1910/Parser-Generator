@@ -3,7 +3,7 @@ package generator.ast;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class AbstractRule extends Entry {
+public abstract class AbstractRule implements GrammarEntry {
     public String name;
 
     public AbstractRule(String name) {

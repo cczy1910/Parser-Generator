@@ -18,8 +18,7 @@ public class RuleInvokation extends Invokation {
     }
 
 
-    @Override
-    protected void deduceRules(Map<String, AbstractRule> naming) {
+    public void deduceRules(Map<String, AbstractRule> naming) {
         if (naming.get(name) instanceof Rule) {
             this.rule = (Rule) naming.get(name);
         } else {

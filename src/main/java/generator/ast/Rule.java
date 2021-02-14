@@ -17,7 +17,7 @@ public class Rule extends AbstractRule {
     }
 
     @Override
-    protected void deduceRules(Map<String, AbstractRule> naming) {
+    public void deduceRules(Map<String, AbstractRule> naming) {
         for (RuleWay way : ways) {
             way.deduceRules(naming);
         }
@@ -54,7 +54,6 @@ public class Rule extends AbstractRule {
         } else {
             result.add("    public " + contextName + "(" + lexerName + " lexer" + ") {");
         }
-//        result.add("        " + abstractTokenName + " curToken = lexer.nextToken();");
         result.add("        switch(lexer.curToken.type) {");
         RuleWay toEps = null;
         for (RuleWay ruleWay : this.ways) {

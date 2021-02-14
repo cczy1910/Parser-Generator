@@ -17,7 +17,7 @@ public class TokenInvokation extends Invokation {
 
 
     @Override
-    protected void deduceRules(Map<String, AbstractRule> naming) {
+    public void deduceRules(Map<String, AbstractRule> naming) {
         if (naming.get(name) instanceof MetaToken) {
             this.rule = (MetaToken) naming.get(name);
         } else {

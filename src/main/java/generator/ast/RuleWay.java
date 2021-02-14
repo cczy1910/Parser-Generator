@@ -2,7 +2,7 @@ package generator.ast;
 
 import java.util.*;
 
-public class RuleWay extends Entry {
+public class RuleWay implements GrammarEntry {
     List<Invokation> way;
     String code;
 
